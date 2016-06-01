@@ -7,7 +7,7 @@
 //
 
 #import "YKDirectVideo.h"
-
+#import "YKViewAdditions.h"
 CGFloat const kDirectThumbnailLocation = 1.0;
 
 @interface YKDirectVideo()
@@ -73,7 +73,8 @@ CGFloat const kDirectThumbnailLocation = 1.0;
 - (void)play:(YKQualityOptions)quality {
     if (!self.player) [self movieViewController:quality];
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentMoviePlayerViewControllerAnimated:self.player];
+    UIViewController * topViewController = [YKViewAdditions ykTopMostViewController];
+    [topViewController presentMoviePlayerViewControllerAnimated:self.player];
     [self.player.moviePlayer play];
 }
 

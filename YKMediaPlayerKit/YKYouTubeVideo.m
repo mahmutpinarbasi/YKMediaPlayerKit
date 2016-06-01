@@ -7,6 +7,7 @@
 //
 
 #import "YKYouTubeVideo.h"
+#import "YKViewAdditions.h"
 #import <HCYoutubeParser/HCYoutubeParser.h>
 
 @interface YKYouTubeVideo()
@@ -96,7 +97,8 @@
 - (void)play:(YKQualityOptions)quality {
     if (!self.player) [self movieViewController:quality];
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentMoviePlayerViewControllerAnimated:self.player];
+    UIViewController * topViewController = [YKViewAdditions ykTopMostViewController];
+    [topViewController presentMoviePlayerViewControllerAnimated:self.player];
     [self.player.moviePlayer play];
 }
 

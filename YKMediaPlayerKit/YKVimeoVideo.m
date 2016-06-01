@@ -8,7 +8,7 @@
 
 #import "YKVimeoVideo.h"
 #import <IGVimeoExtractor/IGVimeoExtractor.h>
-
+#import "YKViewAdditions.h"
 @interface YKVimeoVideo()
 @property (nonatomic, strong) NSString *videoID;
 @property (nonatomic, strong) MPMoviePlayerViewController *player;
@@ -149,7 +149,8 @@
 - (void)play:(YKQualityOptions)quality {
     if (!self.player) [self movieViewController:quality];
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentMoviePlayerViewControllerAnimated:self.player];
+    UIViewController * topViewController = [YKViewAdditions ykTopMostViewController];
+    [topViewController presentMoviePlayerViewControllerAnimated:self.player];
     [self.player.moviePlayer play];
 }
 

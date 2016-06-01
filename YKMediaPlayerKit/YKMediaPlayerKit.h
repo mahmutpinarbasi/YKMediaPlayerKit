@@ -14,6 +14,7 @@
 #import "YKVimeoVideo.h"
 #import "YKDirectVideo.h"
 #import "YKUnKnownVideo.h"
+#import "YKViewAdditions.h"
 
 typedef NS_ENUM(NSUInteger, YKVideoTypeOptions) {
     YKVideoTypeYouTube,

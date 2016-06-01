@@ -7,7 +7,7 @@
 //
 
 #import "YKUnKnownVideo.h"
-
+#import "YKViewAdditions.h"
 #define kNavBarHeight (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending) ? 44.0f : 64.0f)
 
 //CGFloat const kNavBarHeight = 64.0f;
@@ -53,7 +53,8 @@
 }
 
 - (void)play:(YKQualityOptions)quality {
-    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+
+    UIViewController *rootViewController = [YKViewAdditions ykTopMostViewController];
     CGSize viewSize = rootViewController.view.frame.size;
     
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, kNavBarHeight, viewSize.width, viewSize.height-kNavBarHeight)];
